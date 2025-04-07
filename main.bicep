@@ -16,7 +16,7 @@ var storageAccount1Name = 'storage${uniqueSuffix}1'
 var storageAccount2Name = 'storage${uniqueSuffix}2'
 
 // 1. Deploy VNETs and configure peering
-module networkModule './modules/network/vnet.bicep' = {
+module networkModule './network/vnet.bicep' = {
   name: 'networkDeployment'
   params: {
     location: location
@@ -26,7 +26,7 @@ module networkModule './modules/network/vnet.bicep' = {
 }
 
 // 2. Deploy VMs in each VNET's infra subnet
-module computeModule './modules/compute/vm.bicep' = {
+module computeModule './compute/vm.bicep' = {
   name: 'computeDeployment'
   params: {
     location: location
@@ -42,7 +42,7 @@ module computeModule './modules/compute/vm.bicep' = {
 }
 
 // 3. Deploy Storage Accounts in each VNET's storage subnet
-module storageModule './modules/storage/storage.bicep' = {
+module storageModule './storage/storage.bicep' = {
   name: 'storageDeployment'
   params: {
     location: location
@@ -57,7 +57,7 @@ module storageModule './modules/storage/storage.bicep' = {
 }
 
 // 4. Enable Azure Monitor for all resources
-module monitorModule './modules/monitoring/monitor.bicep' = {
+module monitorModule './monitoring/monitor.bicep' = {
   name: 'monitorDeployment'
   params: {
     location: location
