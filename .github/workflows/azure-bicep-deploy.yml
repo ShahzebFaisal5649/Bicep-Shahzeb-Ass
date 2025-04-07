@@ -24,11 +24,13 @@ jobs:
         az bicep build --file main.bicep
         az deployment group validate \
           --resource-group rg-cs5304-shahzebfaisal5649 \
-          --template-file main.bicep
+          --template-file main.bicep \
+          --parameters adminPassword=${{ secrets.ADMIN_PASSWORD }}
 
     # Optional: Uncomment below to enable automatic deployment
     # - name: Azure Bicep - Deploy Template
     #   run: |
     #     az deployment group create \
     #       --resource-group rg-cs5304-shahzebfaisal5649 \
-    #       --template-file main.bicep
+    #       --template-file main.bicep \
+    #       --parameters adminPassword=${{ secrets.ADMIN_PASSWORD }}
